@@ -12,7 +12,7 @@ function App() {
   useEffect(()=>{
     setUsername(prompt('Please enter your name'))
 
-  })
+  },[])
   const sendMessage = (event) => {
     event.preventDefault() // to prevent the app from refreshing because when we press enter and the form is going to submit the screen will be refreshed
     setMessages([...messages, input])
@@ -20,6 +20,7 @@ function App() {
   }
   return (
     <div className="App">
+      <h2>Hey🖐! {username}</h2>
       <form>
       {/* using designing things from material ui */}
         <FormControl>
