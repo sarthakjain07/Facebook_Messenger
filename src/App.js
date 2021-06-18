@@ -5,7 +5,7 @@ import Message from './Message';
 
 function App() {
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState({username:'Sarthak', text:'Hey!'}, {username:'Den', text:'Hello'}) // state used to save messages in the form of objects
+  const [messages, setMessages] = useState([{username:'Sarthak', text:'Hey!'}, {username:'Den', text:'Hello'}]) // state used to save messages in the form of objects
   const [username, setUsername] = useState('') // state used to save username
   // useState = variable in React
   // useEffect = run code on a condition
