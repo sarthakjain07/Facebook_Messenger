@@ -6,7 +6,8 @@ import './Message.css'
 function Message({message, username}) {
     const isUser = username === message.username; // checking if the person who is messaging is owner
     return (
-            <Card className={`message ${isUser && 'message_user'}`}>
+        <div className={`message ${isUser && 'message_user'}`}>
+            <Card className = {isUser ? "message_usercard" : "message_guestcard"}>
             {/* if the person isUser then a special class will be added message_user */}
                 <CardContent>
                     <Typography
@@ -18,6 +19,7 @@ function Message({message, username}) {
                     </Typography>
                 </CardContent>
             </Card>
+        </div>    
                 )
 }
 
