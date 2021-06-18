@@ -32,7 +32,7 @@ function App() {
         {/* to display the messages */}
         {
           messages.map(message => (
-            <Message username={message.username} text={message.text}/> //taking message as a property and passing it to the Message.js for further styling
+            <Message username={username} message={message}/> //taking message as a property and passing it to the Message.js for further styling
           ))
         }
     </div>
