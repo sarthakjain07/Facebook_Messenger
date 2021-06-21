@@ -3,10 +3,13 @@ import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './App.css';
 import Message from './Message';
 import { db } from './firebase';
+import firebase from "firebase";
+
 
 function App() {
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState([{username:'Sarthak',message:'Hey!'}, {username:'Den',message:'Hello'}]) // state used to save messages in the form of objects
+  const [messages, setMessages] = useState([]) // state used to save messages in the form of objects
+  // const [messages, setMessages] = useState([{username:'Jarvis',message:'hi'}]) // when not using database
   const [username, setUsername] = useState('') // state used to save username
   // useState = variable in React
   // useEffect = run code on a condition
@@ -25,7 +28,14 @@ function App() {
   },[])
   const sendMessage = (event) => {
     event.preventDefault() // to prevent the app from refreshing because when we press enter and the form is going to submit the screen will be refreshed
-    setMessages([...messages, {username: username, text: input}]) // appending or pushing objects
+
+    db.collection('messages').add({
+      message: input,
+      username: username,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+
+    // setMessages([...messages, {username: username, text: input}]) // appending or pushing objects
     setInput('')
   }
   return (
