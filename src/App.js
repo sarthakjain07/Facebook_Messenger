@@ -2,13 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './App.css';
 import Message from './Message';
+import { db } from './firebase';
 
 function App() {
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState([{username:'Sarthak', text:'Hey!'}, {username:'Den', text:'Hello'}]) // state used to save messages in the form of objects
+  const [messages, setMessages] = useState([{username:'Sarthak',message:'Hey!'}, {username:'Den',message:'Hello'}]) // state used to save messages in the form of objects
   const [username, setUsername] = useState('') // state used to save username
   // useState = variable in React
   // useEffect = run code on a condition
+
+  // to store the messages in database
+  useEffect(()=>{
+    db.collection('messages').onSnapshot(snapshot=>{
+      setMessages(snapshot.docs.map(doc=>doc.data()))
+    })
+  },[])
+
+
   useEffect(()=>{
     setUsername(prompt('Please enter your name'))
 
