@@ -4,7 +4,7 @@ import './App.css';
 import Message from './Message';
 import { db } from './firebase';
 import firebase from "firebase";
-
+import FlipMove from 'react-flip-move';
 
 function App() {
   const [input, setInput] = useState('')
@@ -14,12 +14,12 @@ function App() {
   // useState = variable in React
   // useEffect = run code on a condition
 
-  // to store the messages in database
+  // to store the messages in database we are using this useEffect
   useEffect(()=>{
     db.collection('messages')
     .orderBy('timestamp','desc')//message will be sorted according to timestamp in descending order
     .onSnapshot(snapshot=>{
-      setMessages(snapshot.docs.map(doc=>doc.data()))
+      setMessages(snapshot.docs.map(doc=>({id: doc.id, message: doc.data()})))
     })
   },[])
 
@@ -52,11 +52,13 @@ function App() {
         </FormControl>
         </form>
         {/* to display the messages */}
+        <FlipMove>
         {
-          messages.map(message => (
-            <Message username={username} message={message}/> //taking message as a property and passing it to the Message.js for further styling
+          messages.map(({id, message}) => (
+            <Message key={id} username={username} message={message}/> //taking message as a property and passing it to the Message.js for further styling
           ))
         }
+        </FlipMove>
     </div>
   );
 }
