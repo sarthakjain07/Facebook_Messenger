@@ -20,6 +20,10 @@ function App() {
     .orderBy('timestamp','desc')//message will be sorted according to timestamp in descending order
     .onSnapshot(snapshot=>{
       setMessages(snapshot.docs.map(doc=>({id: doc.id, message: doc.data()})))
+        // 'docs' is the entire document consisting of many 'doc'
+        //  'doc' is each individual document in the 'docs'. 'doc' is the key-value pair present in each document, as an object.
+        // 'id' is the unique key that is present in firestore for each doc , Format of 'data'  --> {text: 'something' , username: 'name'}
+        // Finally, 'doc' and 'message' is of the format --> {id: 'unique_doc_key', text: 'something' , username: 'name'}
     })
   },[])
 
@@ -42,6 +46,7 @@ function App() {
   }
   return (
     <div className="App">
+      <img src="https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=100&h=100" alt="TexTinder" />
       <h2>Hey🖐 {username}</h2>
       <form>
       {/* using designing things from material ui */}
