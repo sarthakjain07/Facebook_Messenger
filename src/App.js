@@ -16,7 +16,9 @@ function App() {
 
   // to store the messages in database
   useEffect(()=>{
-    db.collection('messages').onSnapshot(snapshot=>{
+    db.collection('messages')
+    .orderBy('timestamp','desc')//message will be sorted according to timestamp in descending order
+    .onSnapshot(snapshot=>{
       setMessages(snapshot.docs.map(doc=>doc.data()))
     })
   },[])
