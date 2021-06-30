@@ -12,15 +12,15 @@
   margin: 20px;
 }
 
-.app__formControl{
+.app__formControl {
   display: flex !important;
   flex-direction: row !important;
 }
 
-.app__iconButton{
+.app__iconButton {
   flex: 0;
 }
 
-.app__input{
+.app__input {
   flex: 1;
 }

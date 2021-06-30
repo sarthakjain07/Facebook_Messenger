@@ -10,8 +10,8 @@ import { IconButton } from '@material-ui/core';
 
 function App() {
   const [input, setInput] = useState('')
-  // const [messages, setMessages] = useState([]) // state used to save messages in the form of objects
-  const [messages, setMessages] = useState([{ username: 'Jarvis', message: 'Hi! Refresh the page & leave your message, Mr. Xain will be replying soon😊' }]) // when not using database
+  const [messages, setMessages] = useState([]) // state used to save messages in the form of objects
+  // const [messages, setMessages] = useState([{ username: 'Jarvis', message: 'Hi! Leave your message, Mr. Xain will be replying soon😊' }]) // when not using database
   const [username, setUsername] = useState('') // state used to save username
   // useState = variable in React
   // useEffect = run code on a condition
