@@ -12,3 +12,7 @@ TexTinder is a chat app where random people can share their interests and have d
 3. After entering name you will see your name with a greeting message and ready for sending message
 
 ![Third Image](https://github.com/sarthakjain07/TexTinder/blob/master/Screenshots/Greeting.png)
+
+4. Working image of how efficiently our chatting app is working
+
+![Fourth Image](https://github.com/sarthakjain07/TexTinder/blob/master/Screenshots/Working.png)
